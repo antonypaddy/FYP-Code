@@ -286,9 +286,7 @@ for snr = 1:31 % run over 31 different SNR's
         unusable = find(isnan(avg_instRR));
         unusable = [unusable ; find(avg_instRR==0)];
         covering= sum(RR_set(unusable),'omitnan');
-        
-        outlier_off = [length(outlierRR(~isnan(outlierRR)))-length(avg_instRR(~isnan(avg_instRR))) - outlier_off];
-                
+                        
         cover = (length(signalorig)-covering)/length(signalorig);
         
         % Genie Method will be the detector with lowest error with at least
