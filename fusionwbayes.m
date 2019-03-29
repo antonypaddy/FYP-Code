@@ -242,7 +242,7 @@ for snr = 1:31 % run over 31 different SNR's
             bayes_inquestion = [bayes_interval(i,:) bayes_avg_instRR(i)];
             
             % only if there are more intervals at index 1
-            if length(bayes_inquestion) > 2
+            if length(bayes_inquestion(~isnan(bayes_inquestion))) > 2
                 % Get mean and Standard Deviation
                 meanRR = avg_instRR(i);
                 bayes_meanRR = bayes_avg_instRR(i);
@@ -259,8 +259,15 @@ for snr = 1:31 % run over 31 different SNR's
 
                 sigmaRR(i) = inquestion; 
                 bayes_sigmaRR(i) = bayes_inquestion; 
+            else
+                sigmaRR(i) = avg_instRR(i);
+                bayes_sigmaRR(i) = bayes_avg_instRR(i);
             end
         end
+        
+        sigmaRR(sigmaRR == 0) = NaN;
+        bayes_sigmaRR(bayes_sigmaRR == 0) = NaN;
+        
         
         % Kalman Filter
         kalmanRR = dy_kalman_inter(interval,avg_instRR);
@@ -332,7 +339,7 @@ for snr = 1:31 % run over 31 different SNR's
         % at 0dB Muscle Artifact
         if snr == 16
             comp_swa = [comp_swa; avg_instRR];  % SWA
-            comp_swa = [comp_swa_b; bayes_avg_instRR];
+            comp_swa_b = [comp_swa_b; bayes_avg_instRR];
             comp_bestSQI  = [comp_bestSQI; bestRR]; % Best SQI
             comp_bestSQI_b  = [comp_bestSQI_b; bayes_bestRR]; 
             comp_median = [comp_median; medRR];     % Median
@@ -394,7 +401,7 @@ title('Best Bayes ');
 bland_altman(comp_swa_p,reference)
 title('SQI with probabilities ');
 bland_altman(comp_ind,reference)
-title('Pr-Fusion Error');
+title('Pre-Fusion Error');
 
 % Make Other Plots of error to SNR
 plotterer;

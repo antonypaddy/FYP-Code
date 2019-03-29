@@ -10,7 +10,7 @@ function [upper,lower,rel] = perc(x_hat,x,N,percentile)
 
 delta = sort((x_hat-x)/N);
 delta = delta(~isnan(delta));
-percentile = round(length(delta)*((100-percentile)/200));
+percentile = round(length(delta)*((100-percentile)/100));
 delta = delta(percentile:end-percentile);
 upper = max(delta);
 lower = min(delta);

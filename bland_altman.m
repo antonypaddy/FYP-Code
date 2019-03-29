@@ -3,9 +3,10 @@ function [] = bland_altman(in,ref)
 % reference
 % Input in = input intervals
 % Input ref = reference intervals
+in(in == 0) = NaN;
 
 % calculate percentiles
-[upper,lower,mean_err] = perc(in,ref,360,95);
+[upper,lower,mean_err] = perc(in,ref,360,99);
 count = 0;
 
 % only include valid points and count
@@ -25,17 +26,17 @@ figure
 % plot points
 plot(x_axis(ind),point(ind),'+');
 hold on
-ylim([-0.75, 0.75]);
+ylim([-1, 1]);
 xlim([0, 2.2]);
 xlabel('Reference RR interval (secs)')
 ylabel('Error of method (secs)')
 % create lines at percentiles
-yline(upper);
-yline(lower);
+yline(upper,'r');
+yline(lower,'r');
 yline(mean_err);
-text(2,upper+0.03,'E_9_5')
-text(2,lower-0.025,'E_5')
-text(2,mean_err+0.025,'Mean')
+text(2,upper+0.06,'E_9_9','Color','red')
+text(2,lower-0.045,'E_1','Color','red')
+text(2,mean_err+0.045,'Mean')
 hold off
 
 end

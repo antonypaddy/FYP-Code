@@ -8,17 +8,17 @@ end
 figure
 
 % Plot Electrode Artifact MAE
-h = plot(mean_mae(fliplr([1:11]),[3 7 8 9]));
-set(h, {'color'}, {[1 0.1 0.1]; [0.4 0.6 0.8];[0.1 1 0.1]; [0.5 0.5 0.5]});
-set(h, {'Marker'}, {'*'; '^'; 'd'; 's'});
+h = plot(mean_mae(fliplr([1:11]),[3 8 9]));
+set(h, {'color'}, {[1 0.1 0.1]; [0.1 1 0.1]; [0.5 0.5 0.5]});
+set(h, {'Marker'}, {'*'; 'd'; 's'});
 hold on
 
-h = plot(bayes_mean_mae(fliplr([1:11]),[4 5 6 7 8]),'--');
+h = plot(bayes_mean_mae(fliplr([1:11]),[5 6 7 8]),'--');
 ylim manual;
 ylim([0,0.15])
-set(h, {'color'}, {[0.4 0.6 0.8]; [0.8 0.6 0.4]; [0.1 1 0.1]; [0.1 0.1 1] ; [0.5 0.5 0.5]})
-set(h, {'Marker'}, {'^'; 'o'; 'd'; '+'; 's'});
-legend('Pre-Fusion','Sigma-Trimmed','Alpha-Trimmed','Kalman','Sigma-Trimmed','Alpha Trimmed','Kalman','Best Bayes','SWA w/ prob.')
+set(h, {'color'}, {[0.1 1 0.1] ; [0.5 0.5 0.5]; [0.8 0.6 0.4]; [0.1 0.1 1]})
+set(h, {'Marker'}, { 'd'; 's'; '+'; 'o'});
+legend('Pre-Fusion','Alpha-Trimmed','Kalman','Alpha Trimmed','Kalman','Best Bayes','SWA w/ prob.')
  
 title('Electrode Artifact')
 
@@ -50,17 +50,17 @@ xticklabels({'30' '-24' '-18' '-12' '-6' '0' '6' '12' '18' '24' 'clean'})
 % Muscle Artifact MAE
 figure
 
-h = plot(mean_mae(fliplr([1 12:21]),[3 7 8 9]));
-set(h, {'color'}, {[1 0.1 0.1]; [0.4 0.6 0.8];[0.1 1 0.1]; [0.5 0.5 0.5]});
-set(h, {'Marker'}, {'*'; '^'; 'd'; 's'});
+h = plot(mean_mae(fliplr([1 12:21]),[3 8 9]));
+set(h, {'color'}, {[1 0.1 0.1]; [0.1 1 0.1]; [0.5 0.5 0.5]});
+set(h, {'Marker'}, {'*'; 'd'; 's'});
 hold on
 
-h = plot(bayes_mean_mae(fliplr([1 12:21]),[4 5 6 7 8]),'--');
+h = plot(bayes_mean_mae(fliplr([1 12:21]),[5 6 7 8]),'--');
 ylim manual;
 ylim([0,0.15])
-set(h, {'color'}, {[0.4 0.6 0.8]; [0.8 0.6 0.4]; [0.1 1 0.1]; [0.1 0.1 1] ; [0.5 0.5 0.5]})
-set(h, {'Marker'}, {'^'; 'o'; 'd'; '+'; 's'});
-legend('Pre-Fusion','Sigma-Trimmed','Alpha-Trimmed','Kalman','Sigma-Trimmed','Alpha Trimmed','Kalman','Best Bayes','SWA w/ prob.')
+set(h, {'color'}, { [0.1 1 0.1] ; [0.5 0.5 0.5]; [0.8 0.6 0.4]; [0.1 0.1 1]})
+set(h, {'Marker'}, { 'd'; 's'; '+';'o'});
+legend('Pre-Fusion','Alpha-Trimmed','Kalman','Alpha Trimmed','Kalman','Best Bayes','SWA w/ prob.')
 
 title('Muscle Artifact')
 
@@ -92,17 +92,17 @@ xticklabels({'30' '-24' '-18' '-12' '-6' '0' '6' '12' '18' '24' 'clean'})
 % Baseline Wander MAE
 figure
 
-h = plot(mean_mae(fliplr([1 22:31]),[3 7 8 9]));
-set(h, {'color'}, {[1 0.1 0.1]; [0.4 0.6 0.8]; [0.1 1 0.1]; [0.5 0.5 0.5]});
-set(h, {'Marker'}, {'*'; '^'; 'd'; 's'});
+h = plot(mean_mae(fliplr([1 22:31]),[3 8 9]));
+set(h, {'color'}, {[1 0.1 0.1];[0.1 1 0.1]; [0.5 0.5 0.5]});
+set(h, {'Marker'}, {'*'; 'd'; 's'});
 hold on
 
-h = plot(bayes_mean_mae(fliplr([1 22:31]),[4 5 6 7 8]),'--');
+h = plot(bayes_mean_mae(fliplr([1 22:31]),[5 6 7 8]),'--');
 ylim manual;
 ylim([0,0.15])
-set(h, {'color'}, {[0.4 0.6 0.8]; [0.8 0.6 0.4]; [0.1 1 0.1]; [0.1 0.1 1] ; [0.5 0.5 0.5]})
-set(h, {'Marker'}, {'^'; 'o'; 'd'; '+'; 's'});
-legend('Pre-Fusion','Sigma-Trimmed','Alpha-Trimmed','Kalman','Sigma-Trimmed','Alpha Trimmed','Kalman','Best Bayes','SWA w/ prob.')
+set(h, {'color'}, {[0.1 1 0.1] ; [0.5 0.5 0.5];[0.8 0.6 0.4];  [0.1 0.1 1]})
+set(h, {'Marker'}, {'d'; 's'; '+'; 'o'});
+legend('Pre-Fusion','Alpha-Trimmed','Kalman','Alpha Trimmed','Kalman','Best Bayes','SWA w/ prob.')
 
 title('Baseline Wander')
 
